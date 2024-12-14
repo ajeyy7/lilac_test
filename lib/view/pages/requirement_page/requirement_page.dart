@@ -13,6 +13,7 @@ class RequirementPage extends StatelessWidget {
           title: const Text('Requirement List'),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CommonButton(
               color: primary,
