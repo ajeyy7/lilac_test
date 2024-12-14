@@ -28,6 +28,7 @@ class BottomBar extends StatelessWidget {
           onTap: (value) {
             bottomViewModel.toggle(value);
           },
+          type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Message"),
