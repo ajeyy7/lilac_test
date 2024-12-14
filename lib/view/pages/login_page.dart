@@ -16,53 +16,63 @@ class LoginPage extends StatelessWidget {
     final loginViewModel = Provider.of<LoginViewModel>(context);
 
     return Scaffold(
-        // appBar: AppBar(),
         body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 70,
-            width: 70,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/Group 655.png"))),
-          ),
-          Text('Login with your email &\n password'),
-          MyTextFiled(
-            controller: emailController,
-            prefixIcon: Image(image: AssetImage('assets/images/sms.png')),
-            name: 'email',
-            hinttext: 'Enter your email',
-          ),
-          MyTextFiled(
-            controller: passwordController,
-            prefixIcon: Image(image: AssetImage('assets/images/lock.png')),
-            name: 'password',
-            hinttext: 'Enter your password',
-          ),
-          Text(
-            'Forgot password',
-            style: TextStyle(color: Colors.blue),
-          ),
-          CommonButton(
-            color: primary,
-            widget: loginViewModel.isLoading
-                ? CircularProgressIndicator()
-                : Text(
-                    'Login',
-                    style: TextStyle(color: Colors.white),
-                  ),
-            onTap: () async {
-              await loginViewModel.login(
-                  emailController.text.trim(), passwordController.text.trim());
-              if (loginViewModel.errorMessage == null) {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => BottomBar()));
-              }
-            },
-          )
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 70,
+              width: 70,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/Group 655.png"))),
+            ),
+            SizedBox(height: 20),
+            Text('Login with your email &\n password'),
+            MyTextFiled(
+              controller: emailController,
+              prefixIcon: Image(image: AssetImage('assets/images/sms.png')),
+              name: 'email',
+              hinttext: 'Enter your email',
+            ),
+            MyTextFiled(
+              controller: passwordController,
+              prefixIcon: Image(image: AssetImage('assets/images/lock.png')),
+              name: 'password',
+              hinttext: 'Enter your password',
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Forgot password',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            CommonButton(
+              color: primary,
+              widget: loginViewModel.isLoading
+                  ? CircularProgressIndicator()
+                  : Text(
+                      'Login',
+                      style: TextStyle(color: Colors.white),
+                    ),
+              onTap: () async {
+                await loginViewModel.login(emailController.text.trim(),
+                    passwordController.text.trim());
+                if (loginViewModel.errorMessage == null) {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => BottomBar()));
+                }
+              },
+            )
+          ],
+        ),
       ),
     ));
   }

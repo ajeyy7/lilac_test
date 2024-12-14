@@ -8,7 +8,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: Icon(Icons.sort),
-          actions: [Icon(Icons.notifications_none)],
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.notifications_none),
+            )
+          ],
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,44 +64,47 @@ class BoxContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Colors.blue.shade50,
-        borderRadius: BorderRadius.circular(12.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 4,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            radius: 30.0,
-            backgroundImage: AssetImage(image),
-          ),
-          SizedBox(height: 10),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Colors.blue.shade50,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 4,
+              offset: Offset(0, 3),
             ),
-          ),
-          SizedBox(height: 5),
-          Text(
-            text1,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey,
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 30.0,
+              backgroundImage: AssetImage(image),
             ),
-          ),
-        ],
+            SizedBox(height: 10),
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 5),
+            Text(
+              text1,
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
